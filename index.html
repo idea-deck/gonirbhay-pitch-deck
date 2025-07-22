@@ -1,451 +1,434 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.6">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #4689cc; -webkit-text-stroke: #4689cc; background-color: #171818}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #4689cc; -webkit-text-stroke: #4689cc; background-color: #171818; min-height: 16.0px}
-    span.s1 {font-kerning: none}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoNirbhay | Rebuilding Trust. Enabling Safety. Empowering Bihar.</title>
+    <!-- Chosen Palette: Soothing Neutrals with a Trustworthy Blue -->
+    <!-- Application Structure Plan: A narrative-driven, single-page scrollable website designed to tell a compelling story. It starts with a Hero Section (Vision), moves to The Chasm (Problem) with data visualizations, then presents The Bridge (Solution) with interactive toggles. It follows with The Opportunity (market data with animated counters), an interactive Impact & Roadmap timeline, and concludes with The Ask & Vision. A sticky navigation facilitates easy exploration. This structure logically guides the user from the core issue to the proposed solution and its potential impact, making it more persuasive than a static slide-by-slide format. -->
+    <!-- Visualization & Content Choices: 
+        - Problem Stats -> Goal: Compare -> Donut Chart (Chart.js) -> Interaction: Hover for details -> Justification: Visually impactful way to show the 77% distrust figure.
+        - Solution Features -> Goal: Organize -> Interactive Toggles (HTML/JS) -> Interaction: Click to switch between Citizen/Police views -> Justification: Condenses a large amount of information into a user-controlled, digestible format.
+        - Opportunity Metrics -> Goal: Inform -> Animated Counters (JS) -> Interaction: Animates on scroll -> Justification: Creates a dynamic and engaging way to highlight key growth numbers.
+        - Pilot Plan -> Goal: Change -> Interactive Timeline (HTML/CSS/JS) -> Interaction: Click to reveal details -> Justification: Clearly shows progression and milestones over time.
+        - Competitive Table -> Goal: Compare -> Styled HTML Table -> Interaction: Static -> Justification: A clear and direct way to present comparative data.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .nav-link {
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: #3b82f6;
+        }
+        .active-tab {
+            background-color: #3b82f6;
+            color: #ffffff;
+        }
+        .inactive-tab {
+            background-color: #e2e8f0;
+            color: #475569;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 1rem;
+            left: -0.6rem;
+            width: 1.2rem;
+            height: 1.2rem;
+            background-color: #cbd5e1;
+            border-radius: 9999px;
+            border: 3px solid #f8fafc;
+        }
+        .timeline-item.active::before {
+            background-color: #3b82f6;
+        }
+    </style>
 </head>
-<body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html lang="en" class="scroll-smooth"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;GoNirbhay | Rebuilding Trust. Enabling Safety. Empowering Bihar.&lt;/title&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Chosen Palette: Soothing Neutrals with a Trustworthy Blue --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Application Structure Plan: A narrative-driven, single-page scrollable website designed to tell a compelling story. It starts with a Hero Section (Vision), moves to The Chasm (Problem) with data visualizations, then presents The Bridge (Solution) with interactive toggles. It follows with The Opportunity (market data with animated counters), an interactive Impact &amp; Roadmap timeline, and concludes with The Ask &amp; Vision. A sticky navigation facilitates easy exploration. This structure logically guides the user from the core issue to the proposed solution and its potential impact, making it more persuasive than a static slide-by-slide format. --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Visualization &amp; Content Choices:<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>- Problem Stats -&gt; Goal: Compare -&gt; Donut Chart (Chart.js) -&gt; Interaction: Hover for details -&gt; Justification: Visually impactful way to show the 77% distrust figure.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>- Solution Features -&gt; Goal: Organize -&gt; Interactive Toggles (HTML/JS) -&gt; Interaction: Click to switch between Citizen/Police views -&gt; Justification: Condenses a large amount of information into a user-controlled, digestible format.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>- Opportunity Metrics -&gt; Goal: Inform -&gt; Animated Counters (JS) -&gt; Interaction: Animates on scroll -&gt; Justification: Creates a dynamic and engaging way to highlight key growth numbers.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>- Pilot Plan -&gt; Goal: Change -&gt; Interactive Timeline (HTML/CSS/JS) -&gt; Interaction: Click to reveal details -&gt; Justification: Clearly shows progression and milestones over time.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>- Competitive Table -&gt; Goal: Compare -&gt; Styled HTML Table -&gt; Interaction: Static -&gt; Justification: A clear and direct way to present comparative data.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>--&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;style&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>body {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-family: 'Inter', sans-serif;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #f8fafc;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: #1e293b;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.chart-container {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: relative;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 100%;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>max-width: 400px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-left: auto;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-right: auto;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>height: 300px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>max-height: 350px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>@media (min-width: 768px) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.chart-container {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>height: 350px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.nav-link {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transition: color 0.3s;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.nav-link:hover {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: #3b82f6;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.active-tab {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #3b82f6;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: #ffffff;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.inactive-tab {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #e2e8f0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: #475569;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.timeline-item::before {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>content: '';</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: absolute;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>top: 1rem;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>left: -0.6rem;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 1.2rem;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>height: 1.2rem;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #cbd5e1;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-radius: 9999px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border: 3px solid #f8fafc;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.timeline-item.active::before {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #3b82f6;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body class="antialiased"&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;nav class="container mx-auto px-6 py-4 flex justify-between items-center"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h1 class="text-2xl font-extrabold text-slate-800"&gt;Go&lt;span class="text-blue-600"&gt;Nirbhay&lt;/span&gt;&lt;/h1&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="hidden md:flex space-x-8"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#problem" class="nav-link text-slate-600 font-semibold"&gt;The Problem&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#solution" class="nav-link text-slate-600 font-semibold"&gt;Our Solution&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#opportunity" class="nav-link text-slate-600 font-semibold"&gt;Opportunity&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#roadmap" class="nav-link text-slate-600 font-semibold"&gt;Roadmap&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#contact" class="nav-link text-slate-600 font-semibold"&gt;Contact&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;a href="#ask" class="hidden md:block bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition"&gt;Our Ask&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/nav&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;main&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;section id="hero" class="py-20 md:py-32 bg-white"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="container mx-auto px-6 text-center"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight"&gt;From &lt;span class="text-red-500"&gt;Fear&lt;/span&gt; to &lt;span class="text-blue-600"&gt;Faith&lt;/span&gt;.&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p class="mt-4 text-lg md:text-xl text-slate-600 max-w-3xl mx-auto"&gt;A CivicTech platform rebuilding trust, enabling safety, and empowering Bihar by bridging the gap between citizens and law enforcement.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="mt-8 flex justify-center gap-4"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;a href="#solution" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition text-lg"&gt;Discover the Solution&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;section id="problem" class="py-20"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="container mx-auto px-6"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="text-center mb-12"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;h2 class="text-3xl md:text-4xl font-extrabold text-slate-800"&gt;The Trust Deficit&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p class="mt-3 text-lg text-slate-600 max-w-3xl mx-auto"&gt;This section explores the deep-rooted problem of mistrust and systemic inefficiency plaguing the relationship between citizens and law enforcement in India, with a specific focus on Bihar. The data presented highlights the scale of the challenge, from public perception to operational backlogs, setting the stage for why a solution like GoNirbhay is urgently needed.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-center"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="lg:col-span-1 text-center md:text-left"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-2xl font-bold text-red-600 italic"&gt;"Aam janta fears the police more than crime."&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;ul class="mt-6 space-y-4 text-slate-700 text-left"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;li class="flex items-start"&gt;&lt;span class="text-blue-500 font-bold mr-2"&gt;●&lt;/span&gt; Lack of a digital platform for complaints or reporting misconduct.&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;li class="flex items-start"&gt;&lt;span class="text-blue-500 font-bold mr-2"&gt;●&lt;/span&gt; Rising corruption and unreported crimes due to poor access.&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;li class="flex items-start"&gt;&lt;span class="text-blue-500 font-bold mr-2"&gt;●&lt;/span&gt; Manual, inefficient crime tracking and outdated systems.&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/ul&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="lg:col-span-1"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                         </span>&lt;div class="chart-container"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;canvas id="trustChart"&gt;&lt;/canvas&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-center mt-2 text-sm text-slate-500"&gt;CSDS Survey Finding&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="lg:col-span-1 bg-white p-6 rounded-lg shadow-md"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h3 class="font-bold text-xl mb-4 text-slate-800"&gt;Bihar: The Pain Points&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="space-y-4"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="font-bold text-3xl text-blue-600"&gt;1.3M+&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="text-slate-600"&gt;Pending cases in Bihar police departments.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="font-bold text-3xl text-blue-600"&gt;Only 20%&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="text-slate-600"&gt;Of districts have online complaint systems.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="font-bold text-3xl text-blue-600"&gt;77/100k&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="text-slate-600"&gt;Police-to-population ratio (below national avg).&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;section id="solution" class="py-20 bg-white"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="container mx-auto px-6"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                 </span>&lt;div class="text-center mb-12"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;h2 class="text-3xl md:text-4xl font-extrabold text-slate-800"&gt;The Bridge: Our Solution&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p class="mt-3 text-lg text-slate-600 max-w-3xl mx-auto"&gt;Here we introduce the GoNirbhay App and Dashboard, a dual-facing platform designed as a comprehensive solution. This section allows you to explore the distinct features and benefits offered to both citizens and the police. Use the toggle to switch between the two perspectives and see how GoNirbhay aims to foster transparency, efficiency, and trust from both sides.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="max-w-4xl mx-auto"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="flex justify-center mb-8"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;button id="citizen-btn" class="active-tab font-bold py-3 px-8 rounded-l-lg transition"&gt;For Citizens&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;button id="police-btn" class="inactive-tab font-bold py-3 px-8 rounded-r-lg transition"&gt;For Police &amp; Govt&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div id="citizen-view"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="grid md:grid-cols-2 gap-8 items-center"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="text-center"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;img src="https://storage.googleapis.com/gemini-prod/images/85a1122a-9e19-482f-827c-b371b29a242f" alt="App screenshot for citizens" class="max-w-xs mx-auto rounded-2xl shadow-2xl"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;h3 class="text-2xl font-bold text-slate-800 mb-4"&gt;Empowering the Public&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;ul class="space-y-3 text-slate-600"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;li class="flex items-center"&gt;&lt;span class="text-green-500 mr-3"&gt;✔&lt;/span&gt; File complaints with photo/video proof.&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;li class="flex items-center"&gt;&lt;span class="text-green-500 mr-3"&gt;✔&lt;/span&gt; Report corruption or misconduct anonymously.&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;li class="flex items-center"&gt;&lt;span class="text-green-500 mr-3"&gt;✔&lt;/span&gt; SOS alerts and help with AI assistance.&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;li class="flex items-center"&gt;&lt;span class="text-green-500 mr-3"&gt;✔&lt;/span&gt; Know your legal rights instantly.&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;li class="flex items-center"&gt;&lt;span class="text-green-500 mr-3"&gt;✔&lt;/span&gt; Track complaint updates in real-time.&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/ul&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div id="police-view" class="hidden"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="grid md:grid-cols-2 gap-8 items-center"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                             </span>&lt;div class="text-center"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;img src="https://storage.googleapis.com/gemini-prod/images/8e0b0e51-d419-4179-845d-757827e8a93e" alt="App screenshot for police" class="max-w-xs mx-auto rounded-2xl shadow-2xl"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;h3 class="text-2xl font-bold text-slate-800 mb-4"&gt;Enabling Law Enforcement&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;ul class="space-y-3 text-slate-600"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;li class="flex items-center"&gt;&lt;span class="text-green-500 mr-3"&gt;✔&lt;/span&gt; Criminal tracking via AI/location/image detection.&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;li class="flex items-center"&gt;&lt;span class="text-green-500 mr-3"&gt;✔&lt;/span&gt; Heatmap of high-crime zones for patrol planning.&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;li class="flex items-center"&gt;&lt;span class="text-green-500 mr-3"&gt;✔&lt;/span&gt; Predictive alerts using behavioral and geo-data.&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;li class="flex items-center"&gt;&lt;span class="text-green-500 mr-3"&gt;✔&lt;/span&gt; Internal case tracker + public feedback loop.&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;li class="flex items-center"&gt;&lt;span class="text-green-500 mr-3"&gt;✔&lt;/span&gt; Department-level dashboard for transparency.&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/ul&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;section id="opportunity" class="py-20"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="container mx-auto px-6"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="text-center mb-12"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;h2 class="text-3xl md:text-4xl font-extrabold text-slate-800"&gt;A State Ready for Change&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                     </span>&lt;p class="mt-3 text-lg text-slate-600 max-w-3xl mx-auto"&gt;This section quantifies the immense opportunity for digital transformation in Bihar. The statistics presented demonstrate a convergence of factors—a large population, increasing digital access, and strong government intent—that create the perfect environment for GoNirbhay to succeed and make a significant impact right now.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-8 rounded-lg shadow-lg"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-5xl font-extrabold text-blue-600 counter" data-target="13"&gt;0&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="mt-2 text-lg font-semibold text-slate-700"&gt;Crore Population&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-sm text-slate-500"&gt;India's 3rd most populous state&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-8 rounded-lg shadow-lg"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-5xl font-extrabold text-blue-600"&gt;&lt;span class="counter" data-target="65"&gt;0&lt;/span&gt;%+&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="mt-2 text-lg font-semibold text-slate-700"&gt;Smartphone Penetration&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-sm text-slate-500"&gt;Including rural access&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-8 rounded-lg shadow-lg"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-5xl font-extrabold text-blue-600"&gt;&lt;span class="counter" data-target="11.2"&gt;0&lt;/span&gt;%&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="mt-2 text-lg font-semibold text-slate-700"&gt;Increase in Crime Rate&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-sm text-slate-500"&gt;Year-over-Year (NCRB)&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-8 rounded-lg shadow-lg"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-4xl font-extrabold text-blue-600"&gt;Clear Intent&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="mt-2 text-lg font-semibold text-slate-700"&gt;Govt. Promotes Digitization&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-sm text-slate-500"&gt;CPGRAMS, Jansunwai initiatives&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;section id="roadmap" class="py-20 bg-white"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="container mx-auto px-6"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="text-center mb-12"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;h2 class="text-3xl md:text-4xl font-extrabold text-slate-800"&gt;Impact Roadmap&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p class="mt-3 text-lg text-slate-600 max-w-3xl mx-auto"&gt;This interactive timeline outlines our strategic pilot plan for Bihar and our key social impact goals. Click on each phase of the timeline to see the specific targets we aim to achieve, from user adoption to police onboarding. This demonstrates our clear, phased approach to launching GoNirbhay and making a measurable difference.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="grid md:grid-cols-5 gap-8"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="md:col-span-2"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-2xl font-bold text-slate-800 mb-4"&gt;Social Impact Goals&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                         </span>&lt;ul class="space-y-3 text-slate-600"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;li class="flex items-center"&gt;&lt;span class="text-blue-500 mr-3"&gt;🎯&lt;/span&gt; Reduce unreported crimes by 30% in 1 year.&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;li class="flex items-center"&gt;&lt;span class="text-blue-500 mr-3"&gt;🎯&lt;/span&gt; Digitize over 100 police stations in 24 months.&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;li class="flex items-center"&gt;&lt;span class="text-blue-500 mr-3"&gt;🎯&lt;/span&gt; Save thousands of hours in manual reporting.&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;li class="flex items-center"&gt;&lt;span class="text-blue-500 mr-3"&gt;🎯&lt;/span&gt; Provide digital access to over 1 crore Biharis.&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/ul&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="md:col-span-3"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="relative border-l-2 border-slate-200 pl-8"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div id="timeline-1" class="timeline-item active mb-10 cursor-pointer" data-content="timeline-content-1"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;h4 class="font-bold text-xl text-slate-800"&gt;Phase 1: Foundation (Months 1-2)&lt;/h4&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="text-slate-500"&gt;MVP App &amp; Backend Dashboard Development.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div id="timeline-2" class="timeline-item mb-10 cursor-pointer" data-content="timeline-content-2"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;h4 class="font-bold text-xl text-slate-800"&gt;Phase 2: Collaboration (Months 3-4)&lt;/h4&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="text-slate-500"&gt;Government partnership &amp; SP, DM support.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                             </span>&lt;div id="timeline-3" class="timeline-item cursor-pointer" data-content="timeline-content-3"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;h4 class="font-bold text-xl text-slate-800"&gt;Phase 3: Rollout (Months 5-6)&lt;/h4&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p class="text-slate-500"&gt;Launch in Patna, Gaya, Muzaffarpur, Bhagalpur with awareness campaign.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div id="timeline-content-1" class="mt-6 bg-blue-50 p-4 rounded-lg"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;h5 class="font-bold"&gt;Targets for Phase 1:&lt;/h5&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;p&gt;Focus on core feature development and platform stability.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                         </span>&lt;div id="timeline-content-2" class="hidden mt-6 bg-blue-50 p-4 rounded-lg"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;h5 class="font-bold"&gt;Targets for Phase 2:&lt;/h5&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;p&gt;Secure official partnerships and onboard key administrative personnel.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                         </span>&lt;div id="timeline-content-3" class="hidden mt-6 bg-blue-50 p-4 rounded-lg"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;h5 class="font-bold"&gt;Targets for Phase 3 (First 6 Months):&lt;/h5&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                             </span>&lt;ul class="list-disc list-inside"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;li&gt;5,000+ complaints processed&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;li&gt;100+ officers onboarded&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;li&gt;50,000+ users acquired&lt;/li&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/ul&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;section id="ask" class="py-20"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">             </span>&lt;div class="container mx-auto px-6 text-center"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                 </span>&lt;h2 class="text-3xl md:text-4xl font-extrabold text-slate-800"&gt;Join Us in Building a Safer Bihar&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                 </span>&lt;p class="mt-3 text-lg text-slate-600 max-w-3xl mx-auto"&gt;To make this vision a reality, we seek a strategic partnership with the government. This section outlines our specific requests for support, which are crucial for a successful pilot and the long-term success of GoNirbhay.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="mt-10 max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 text-left"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-6 rounded-lg shadow-md"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h4 class="font-bold text-lg text-slate-800"&gt;Pilot Support&lt;/h4&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-slate-600"&gt;Support for pilot program in 3 key districts.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                     </span>&lt;div class="bg-white p-6 rounded-lg shadow-md"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h4 class="font-bold text-lg text-slate-800"&gt;Department Access&lt;/h4&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-slate-600"&gt;Access to local police for seamless integration.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                     </span>&lt;div class="bg-white p-6 rounded-lg shadow-md"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h4 class="font-bold text-lg text-slate-800"&gt;Data Sharing&lt;/h4&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-slate-600"&gt;For crime mapping and generating insights.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                     </span>&lt;div class="bg-white p-6 rounded-lg shadow-md"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h4 class="font-bold text-lg text-slate-800"&gt;Recognition&lt;/h4&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-slate-600"&gt;As an official CivicTech Innovation Partner.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">             </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/main&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;footer id="contact" class="bg-slate-800 text-white"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="container mx-auto px-6 py-10 text-center"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h2 class="text-2xl font-bold"&gt;Let’s build a safe, responsive, and digital-first Bihar together.&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p class="mt-4"&gt;Mayank Gupta | GoNirbhay&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p class="text-slate-400"&gt;[Phone] | [Email] | [Location: Bihar]&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/footer&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.addEventListener('DOMContentLoaded', function () {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const citizenBtn = document.getElementById('citizen-btn');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const policeBtn = document.getElementById('police-btn');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const citizenView = document.getElementById('citizen-view');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const policeView = document.getElementById('police-view');</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>citizenBtn.addEventListener('click', () =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>citizenView.classList.remove('hidden');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>policeView.classList.add('hidden');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>citizenBtn.classList.add('active-tab');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>citizenBtn.classList.remove('inactive-tab');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>policeBtn.classList.add('inactive-tab');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>policeBtn.classList.remove('active-tab');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>policeBtn.addEventListener('click', () =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>policeView.classList.remove('hidden');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>citizenView.classList.add('hidden');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>policeBtn.classList.add('active-tab');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>policeBtn.classList.remove('inactive-tab');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>citizenBtn.classList.add('inactive-tab');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>citizenBtn.classList.remove('active-tab');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const trustCtx = document.getElementById('trustChart').getContext('2d');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>new Chart(trustCtx, {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>type: 'doughnut',</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>data: {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>labels: ['Feel Police are Not Citizen-Friendly', 'Feel Police are Citizen-Friendly'],</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>datasets: [{</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>data: [77, 23],</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>backgroundColor: ['#ef4444', '#3b82f6'],</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>borderColor: '#f8fafc',</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>borderWidth: 4,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>}]</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>},</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>responsive: true,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>maintainAspectRatio: false,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>cutout: '70%',</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>plugins: {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>legend: {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>position: 'bottom',</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>labels: {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>color: '#475569',</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>font: {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>size: 14,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>family: 'Inter'</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>},</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>tooltip: {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>callbacks: {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>label: function(context) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                    </span>return context.label + ': ' + context.raw + '%';</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>function animateCounters() {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const counters = document.querySelectorAll('.counter');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const speed = 200;<span class="Apple-converted-space"> </span></span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>counters.forEach(counter =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const updateCount = () =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>const target = +counter.getAttribute('data-target');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>const count = +counter.innerText;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>const inc = target / speed;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>if (count &lt; target) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>counter.innerText = Math.ceil(count + inc);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>setTimeout(updateCount, 10);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>} else {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>counter.innerText = target;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>};</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>updateCount();</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const observer = new IntersectionObserver((entries) =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>entries.forEach(entry =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>if (entry.isIntersecting) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>animateCounters();</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>observer.unobserve(entry.target);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}, { threshold: 0.5 });</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const opportunitySection = document.getElementById('opportunity');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if(opportunitySection) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>observer.observe(opportunitySection);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const timelineItems = document.querySelectorAll('.timeline-item');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const timelineContents = document.querySelectorAll('[id^="timeline-content-"]');</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>timelineItems.forEach(item =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>item.addEventListener('click', () =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const contentId = item.getAttribute('data-content');</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>timelineItems.forEach(i =&gt; i.classList.remove('active'));</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>item.classList.add('active');</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>timelineContents.forEach(content =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>if (content.id === contentId) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>content.classList.remove('hidden');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>} else {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>content.classList.add('hidden');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-extrabold text-slate-800">Go<span class="text-blue-600">Nirbhay</span></h1>
+            <div class="hidden md:flex space-x-8">
+                <a href="#problem" class="nav-link text-slate-600 font-semibold">The Problem</a>
+                <a href="#solution" class="nav-link text-slate-600 font-semibold">Our Solution</a>
+                <a href="#opportunity" class="nav-link text-slate-600 font-semibold">Opportunity</a>
+                <a href="#roadmap" class="nav-link text-slate-600 font-semibold">Roadmap</a>
+                <a href="#contact" class="nav-link text-slate-600 font-semibold">Contact</a>
+            </div>
+            <a href="#ask" class="hidden md:block bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition">Our Ask</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="py-20 md:py-32 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight">From <span class="text-red-500">Fear</span> to <span class="text-blue-600">Faith</span>.</h2>
+                <p class="mt-4 text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">A CivicTech platform rebuilding trust, enabling safety, and empowering Bihar by bridging the gap between citizens and law enforcement.</p>
+                <div class="mt-8 flex justify-center gap-4">
+                    <a href="#solution" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition text-lg">Discover the Solution</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="problem" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800">The Trust Deficit</h2>
+                    <p class="mt-3 text-lg text-slate-600 max-w-3xl mx-auto">This section explores the deep-rooted problem of mistrust and systemic inefficiency plaguing the relationship between citizens and law enforcement in India, with a specific focus on Bihar. The data presented highlights the scale of the challenge, from public perception to operational backlogs, setting the stage for why a solution like GoNirbhay is urgently needed.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-center">
+                    <div class="lg:col-span-1 text-center md:text-left">
+                        <p class="text-2xl font-bold text-red-600 italic">"Aam janta fears the police more than crime."</p>
+                        <ul class="mt-6 space-y-4 text-slate-700 text-left">
+                            <li class="flex items-start"><span class="text-blue-500 font-bold mr-2">●</span> Lack of a digital platform for complaints or reporting misconduct.</li>
+                            <li class="flex items-start"><span class="text-blue-500 font-bold mr-2">●</span> Rising corruption and unreported crimes due to poor access.</li>
+                            <li class="flex items-start"><span class="text-blue-500 font-bold mr-2">●</span> Manual, inefficient crime tracking and outdated systems.</li>
+                        </ul>
+                    </div>
+                    <div class="lg:col-span-1">
+                         <div class="chart-container">
+                            <canvas id="trustChart"></canvas>
+                        </div>
+                        <p class="text-center mt-2 text-sm text-slate-500">CSDS Survey Finding</p>
+                    </div>
+                    <div class="lg:col-span-1 bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="font-bold text-xl mb-4 text-slate-800">Bihar: The Pain Points</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="font-bold text-3xl text-blue-600">1.3M+</p>
+                                <p class="text-slate-600">Pending cases in Bihar police departments.</p>
+                            </div>
+                            <div>
+                                <p class="font-bold text-3xl text-blue-600">Only 20%</p>
+                                <p class="text-slate-600">Of districts have online complaint systems.</p>
+                            </div>
+                            <div>
+                                <p class="font-bold text-3xl text-blue-600">77/100k</p>
+                                <p class="text-slate-600">Police-to-population ratio (below national avg).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="solution" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800">The Bridge: Our Solution</h2>
+                    <p class="mt-3 text-lg text-slate-600 max-w-3xl mx-auto">Here we introduce the GoNirbhay App and Dashboard, a dual-facing platform designed as a comprehensive solution. This section allows you to explore the distinct features and benefits offered to both citizens and the police. Use the toggle to switch between the two perspectives and see how GoNirbhay aims to foster transparency, efficiency, and trust from both sides.</p>
+                </div>
+                
+                <div class="max-w-4xl mx-auto">
+                    <div class="flex justify-center mb-8">
+                        <button id="citizen-btn" class="active-tab font-bold py-3 px-8 rounded-l-lg transition">For Citizens</button>
+                        <button id="police-btn" class="inactive-tab font-bold py-3 px-8 rounded-r-lg transition">For Police & Govt</button>
+                    </div>
+
+                    <div id="citizen-view">
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div class="text-center">
+                                <img src="https://storage.googleapis.com/gemini-prod/images/85a1122a-9e19-482f-827c-b371b29a242f" alt="App screenshot for citizens" class="max-w-xs mx-auto rounded-2xl shadow-2xl">
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-slate-800 mb-4">Empowering the Public</h3>
+                                <ul class="space-y-3 text-slate-600">
+                                    <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> File complaints with photo/video proof.</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Report corruption or misconduct anonymously.</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> SOS alerts and help with AI assistance.</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Know your legal rights instantly.</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Track complaint updates in real-time.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="police-view" class="hidden">
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                             <div class="text-center">
+                                <img src="https://storage.googleapis.com/gemini-prod/images/8e0b0e51-d419-4179-845d-757827e8a93e" alt="App screenshot for police" class="max-w-xs mx-auto rounded-2xl shadow-2xl">
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-slate-800 mb-4">Enabling Law Enforcement</h3>
+                                <ul class="space-y-3 text-slate-600">
+                                    <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Criminal tracking via AI/location/image detection.</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Heatmap of high-crime zones for patrol planning.</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Predictive alerts using behavioral and geo-data.</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Internal case tracker + public feedback loop.</li>
+                                    <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Department-level dashboard for transparency.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="opportunity" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800">A State Ready for Change</h2>
+                     <p class="mt-3 text-lg text-slate-600 max-w-3xl mx-auto">This section quantifies the immense opportunity for digital transformation in Bihar. The statistics presented demonstrate a convergence of factors—a large population, increasing digital access, and strong government intent—that create the perfect environment for GoNirbhay to succeed and make a significant impact right now.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <p class="text-5xl font-extrabold text-blue-600 counter" data-target="13">0</p>
+                        <p class="mt-2 text-lg font-semibold text-slate-700">Crore Population</p>
+                        <p class="text-sm text-slate-500">India's 3rd most populous state</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <p class="text-5xl font-extrabold text-blue-600"><span class="counter" data-target="65">0</span>%+</p>
+                        <p class="mt-2 text-lg font-semibold text-slate-700">Smartphone Penetration</p>
+                        <p class="text-sm text-slate-500">Including rural access</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <p class="text-5xl font-extrabold text-blue-600"><span class="counter" data-target="11.2">0</span>%</p>
+                        <p class="mt-2 text-lg font-semibold text-slate-700">Increase in Crime Rate</p>
+                        <p class="text-sm text-slate-500">Year-over-Year (NCRB)</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <p class="text-4xl font-extrabold text-blue-600">Clear Intent</p>
+                        <p class="mt-2 text-lg font-semibold text-slate-700">Govt. Promotes Digitization</p>
+                        <p class="text-sm text-slate-500">CPGRAMS, Jansunwai initiatives</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800">Impact Roadmap</h2>
+                    <p class="mt-3 text-lg text-slate-600 max-w-3xl mx-auto">This interactive timeline outlines our strategic pilot plan for Bihar and our key social impact goals. Click on each phase of the timeline to see the specific targets we aim to achieve, from user adoption to police onboarding. This demonstrates our clear, phased approach to launching GoNirbhay and making a measurable difference.</p>
+                </div>
+                <div class="grid md:grid-cols-5 gap-8">
+                    <div class="md:col-span-2">
+                        <h3 class="text-2xl font-bold text-slate-800 mb-4">Social Impact Goals</h3>
+                         <ul class="space-y-3 text-slate-600">
+                            <li class="flex items-center"><span class="text-blue-500 mr-3">🎯</span> Reduce unreported crimes by 30% in 1 year.</li>
+                            <li class="flex items-center"><span class="text-blue-500 mr-3">🎯</span> Digitize over 100 police stations in 24 months.</li>
+                            <li class="flex items-center"><span class="text-blue-500 mr-3">🎯</span> Save thousands of hours in manual reporting.</li>
+                            <li class="flex items-center"><span class="text-blue-500 mr-3">🎯</span> Provide digital access to over 1 crore Biharis.</li>
+                        </ul>
+                    </div>
+                    <div class="md:col-span-3">
+                        <div class="relative border-l-2 border-slate-200 pl-8">
+                            <div id="timeline-1" class="timeline-item active mb-10 cursor-pointer" data-content="timeline-content-1">
+                                <h4 class="font-bold text-xl text-slate-800">Phase 1: Foundation (Months 1-2)</h4>
+                                <p class="text-slate-500">MVP App & Backend Dashboard Development.</p>
+                            </div>
+                            <div id="timeline-2" class="timeline-item mb-10 cursor-pointer" data-content="timeline-content-2">
+                                <h4 class="font-bold text-xl text-slate-800">Phase 2: Collaboration (Months 3-4)</h4>
+                                <p class="text-slate-500">Government partnership & SP, DM support.</p>
+                            </div>
+                             <div id="timeline-3" class="timeline-item cursor-pointer" data-content="timeline-content-3">
+                                <h4 class="font-bold text-xl text-slate-800">Phase 3: Rollout (Months 5-6)</h4>
+                                <p class="text-slate-500">Launch in Patna, Gaya, Muzaffarpur, Bhagalpur with awareness campaign.</p>
+                            </div>
+                        </div>
+                        <div id="timeline-content-1" class="mt-6 bg-blue-50 p-4 rounded-lg">
+                            <h5 class="font-bold">Targets for Phase 1:</h5>
+                            <p>Focus on core feature development and platform stability.</p>
+                        </div>
+                         <div id="timeline-content-2" class="hidden mt-6 bg-blue-50 p-4 rounded-lg">
+                            <h5 class="font-bold">Targets for Phase 2:</h5>
+                            <p>Secure official partnerships and onboard key administrative personnel.</p>
+                        </div>
+                         <div id="timeline-content-3" class="hidden mt-6 bg-blue-50 p-4 rounded-lg">
+                            <h5 class="font-bold">Targets for Phase 3 (First 6 Months):</h5>
+                             <ul class="list-disc list-inside">
+                                <li>5,000+ complaints processed</li>
+                                <li>100+ officers onboarded</li>
+                                <li>50,000+ users acquired</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="ask" class="py-20">
+             <div class="container mx-auto px-6 text-center">
+                 <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800">Join Us in Building a Safer Bihar</h2>
+                 <p class="mt-3 text-lg text-slate-600 max-w-3xl mx-auto">To make this vision a reality, we seek a strategic partnership with the government. This section outlines our specific requests for support, which are crucial for a successful pilot and the long-term success of GoNirbhay.</p>
+                <div class="mt-10 max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="font-bold text-lg text-slate-800">Pilot Support</h4>
+                        <p class="text-slate-600">Support for pilot program in 3 key districts.</p>
+                    </div>
+                     <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="font-bold text-lg text-slate-800">Department Access</h4>
+                        <p class="text-slate-600">Access to local police for seamless integration.</p>
+                    </div>
+                     <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="font-bold text-lg text-slate-800">Data Sharing</h4>
+                        <p class="text-slate-600">For crime mapping and generating insights.</p>
+                    </div>
+                     <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="font-bold text-lg text-slate-800">Recognition</h4>
+                        <p class="text-slate-600">As an official CivicTech Innovation Partner.</p>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+    </main>
+
+    <footer id="contact" class="bg-slate-800 text-white">
+        <div class="container mx-auto px-6 py-10 text-center">
+            <h2 class="text-2xl font-bold">Let’s build a safe, responsive, and digital-first Bihar together.</h2>
+            <p class="mt-4">Mayank Gupta | GoNirbhay</p>
+            <p class="text-slate-400">[Phone] | [Email] | [Location: Bihar]</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const citizenBtn = document.getElementById('citizen-btn');
+            const policeBtn = document.getElementById('police-btn');
+            const citizenView = document.getElementById('citizen-view');
+            const policeView = document.getElementById('police-view');
+
+            citizenBtn.addEventListener('click', () => {
+                citizenView.classList.remove('hidden');
+                policeView.classList.add('hidden');
+                citizenBtn.classList.add('active-tab');
+                citizenBtn.classList.remove('inactive-tab');
+                policeBtn.classList.add('inactive-tab');
+                policeBtn.classList.remove('active-tab');
+            });
+
+            policeBtn.addEventListener('click', () => {
+                policeView.classList.remove('hidden');
+                citizenView.classList.add('hidden');
+                policeBtn.classList.add('active-tab');
+                policeBtn.classList.remove('inactive-tab');
+                citizenBtn.classList.add('inactive-tab');
+                citizenBtn.classList.remove('active-tab');
+            });
+
+            const trustCtx = document.getElementById('trustChart').getContext('2d');
+            new Chart(trustCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Feel Police are Not Citizen-Friendly', 'Feel Police are Citizen-Friendly'],
+                    datasets: [{
+                        data: [77, 23],
+                        backgroundColor: ['#ef4444', '#3b82f6'],
+                        borderColor: '#f8fafc',
+                        borderWidth: 4,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#475569',
+                                font: {
+                                    size: 14,
+                                    family: 'Inter'
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': ' + context.raw + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            function animateCounters() {
+                const counters = document.querySelectorAll('.counter');
+                const speed = 200; 
+
+                counters.forEach(counter => {
+                    const updateCount = () => {
+                        const target = +counter.getAttribute('data-target');
+                        const count = +counter.innerText;
+                        const inc = target / speed;
+
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + inc);
+                            setTimeout(updateCount, 10);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    updateCount();
+                });
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            const opportunitySection = document.getElementById('opportunity');
+            if(opportunitySection) {
+                observer.observe(opportunitySection);
+            }
+
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const timelineContents = document.querySelectorAll('[id^="timeline-content-"]');
+
+            timelineItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const contentId = item.getAttribute('data-content');
+                    
+                    timelineItems.forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                    
+                    timelineContents.forEach(content => {
+                        if (content.id === contentId) {
+                            content.classList.remove('hidden');
+                        } else {
+                            content.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+
+        });
+    </script>
+
 </body>
 </html>
